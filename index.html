@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RecipeShare</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        /* Additional CSS for the recipe cards */
+        .recipe-card {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 10px;
+            width: calc(33.33% - 20px);
+            float: left;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        .recipe-details {
+            display: none; /* Hide details by default */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="page-title">Delicious Recipes</h1>
+    </header>
+    <main>
+        <section id="recipe-container">
+        <ul>
+        {% for recipe in recipes_data %}
+        <div class="recipe-card">
+            <li>
+                <img src="{{ recipe['image_url']}}" alt="image not found">
+                <h2>{{ recipe['TranslatedRecipeName'] }}</h2>
+                <button class="show-details-button" data-recipe-id="{{ recipe.RecipeID }}">Show Recipe</button>
+                <div class="recipe-details" id="recipe-details-{{ recipe.RecipeID }}">
+                    <h3>Ingredients:</h3>
+                    <ol class="ingredients-list">
+                        {% for ingredient in recipe.TranslatedIngredients.split(',') %}
+                            <li>{{ ingredient }}</li>
+                        {% endfor %}
+                    </ol>
+                    <h3>Instructions:</h3>
+                    <p class="instructions">{{ recipe.TranslatedInstructions }}</p>
+                    <!--<p>Cuisine: {{ recipe['Cuisine'] }}</p>
+                    <p>Total Time: {{ recipe['TotalTimeInMins'] }} minutes</p>
+                    <p>Ingredients: {{ recipe['TranslatedIngredients'] }}</p>
+                    <p>Instructions: {{ recipe['TranslatedInstructions'] }}</p>
+                    <p>Ingredients: {{ recipe['TranslatedIngredients'] }}</p>
+                     Add more fields as needed 
+                    -->
+                </div>
+            </li>
+        </div>
+        {% endfor %}
+        </ul>
+        </section>  
+    <footer>
+        <p>&copy; 2023 Your Recipe Website</p>
+    </footer> 
+    <script>
+        // JavaScript to toggle recipe details
+        const buttons = document.querySelectorAll('.show-details-button');
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const recipeId = button.getAttribute('data-recipe-id');
+                const details = document.getElementById(`recipe-details-${recipeId}`);
+                details.style.display = details.style.display === 'none' ? 'block' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>
