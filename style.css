@@ -1,41 +1,160 @@
-/* style.css */
-img {
-    width: 300px;
-    height: 300px;
-    object-fit: cover;
-    
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
+*{
+    padding: 0;
     margin: 0;
-    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --tenne-tawny: #d65108;
+    --tenne-tawny-dark: #b54507;
+}
+body{
+    font-weight: 300;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    font-family: 'Poppins', sans-serif;
+}
+.img{
+    width: 50px;
+    height: auto;
+}
+/*  */
+.btn{
+    font-family: inherit;
+    cursor: pointer;
+    outline: 0;
+    font-size: 1.05rem;
+}
+.text{
+    opacity: 0.8;
+}
+.title{
+    font-size: 2rem;
+    margin-bottom: 1rem;
 }
 
-h1 {
-    color: #333;
+/*  */
+.container{
+    min-height: 100vh;
+}
+.recipe-wrapper{
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: #fff;
     text-align: center;
-    padding: 20px;
-    background-color: #fff;
 }
-
-ul {
-    list-style-type: none;
-    padding: 0;
+.recipe-search{
+    margin: 2rem 0;
 }
-
-li {
-    background-color: #fff;
-    margin: 10px;
-    padding: 20px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+.recipe-search cite{
+    font-size: 1rem;
 }
-footer {
-    background-color: #333;
+.recipe-search-box{
+    margin: 1.2rem 0;
+    display: flex;
+    align-items: stretch;
+}
+.search-btn{
+    width: 100%;
+}
+.search-control{
+    padding: 0 1rem;
+    font-size: 1.1rem;
+    font-family: inherit;
+    outline: 0;
+    border: 1px solid var(--tenne-tawny);
+    color: var(--tenne-tawny);
+    border-top-left-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+}
+.search-control::placeholder{
+    color: var(--tenne-tawny);
+}
+.search-btn{
+    width: 55px;
+    height: 55px;
+    font-size: 1.8rem;
+    background: var(--tenne-tawny);
     color: #fff;
-    text-align: center;
-    padding: 10px 0;
+    border: none;
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    transition: all 0.4s linear;
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -ms-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+}
+.search-btn:hover{
+    background: var(--tenne-tawny-dark);
+}
+.search-input{
+    width: 40%;
+    height: 50px;
+    padding: 0 1rem;
+    font-size: 1.1rem;
+    font-family: inherit;
+    outline: 0;
+    border: 1px solid var(--tenne-tawny);
+    color: var(--tenne-tawny);
+    border-top-left-radius: 2rem;
+    border-bottom-left-radius: 2rem;
 }
 
-/* Add more CSS styles as needed */
+/* Apply styles to the recipe grid */
+.recipe-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Gap between grid items */
+    padding: 10px;
+    border: 1px solid #ccc; /* Optional border for each grid item */
+    background-color: #fff; /* Background color for each grid item */
+}
+
+/* Style for individual grid items within the recipe grid */
+.recipe-grid img {
+    max-width: 25%;
+    max-height: 20%;
+    border-radius: 5px; /* Rounded corners for images */
+}
+
+.recipe-grid h2 {
+    font-size: 18px;
+    margin: 10px 0; 
+}
+
+.recipe-grid p {
+    margin: 5px 0;
+}
+/* Loading screen styles (initially hidden) */
+.loading-screen {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 999; /* Ensure it appears above other content */
+}
+
+/* Loader animation (customize as needed) */
+.loader {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #ff731b;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
