@@ -73,9 +73,19 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+const form = document.getElementById('search-form');
 const searchButton = document.getElementById('search-button');
 const loadingScreen = document.getElementById('loading-screen');
 
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const recipeName = document.getElementById('search-input').value.trim();
+
+    if (!recipeName) {
+        alert('Please enter a recipe name.');
+        return;
+    }})
 // Function to show the loading screen
 function showLoadingScreen() {
     loadingScreen.style.display = 'flex'; // Show the loading screen
@@ -90,7 +100,7 @@ function hideLoadingScreen() {
 searchButton.addEventListener('click', () => {
     // Show the loading screen when the search button is clicked
     showLoadingScreen();
-
+    const startTime = Date.now();
     async function fetchRecipeData() {
         try {
             const response = await fetch('/search_recipe'); // Replace with your API endpoint or data source URL
@@ -100,13 +110,15 @@ searchButton.addEventListener('click', () => {
             console.error('Error:', error);
         }
     }
-    
+    const endTime = Date.now();
+    const loadingTime = endTime - startTime;
+
     setTimeout(() => {
         // After the operation is complete, hide the loading screen
         hideLoadingScreen();
 
         // Display the search results or perform other actions here
-    }, 10000); // Adjust the timeout duration as needed
+    }, loadingTime); // Adjust the timeout duration as needed
 });
 
 
