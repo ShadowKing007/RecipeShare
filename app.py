@@ -1,13 +1,46 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, redirect, url_for, session, flash
 import sqlite3
 import json
+import os
 from sqlite3 import Cursor
 app = Flask(__name__, static_url_path='/static',template_folder='templates')
 # Serve static files (CSS, JS, images, etc.) from the 'static' folder
 app.static_folder = 'static'
 
+app.secret_key = os.urandom(24)
+# Fake user data (replace this with a real user database)
+users = {'user1': 'password1', 'user2': 'password2'}
 @app.route('/')
 def index():
+    if 'logged_in' in session and session['logged_in']:
+        return home()
+    else:
+        return redirect(url_for('login'))
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+
+        if username in users and users[username] == password:
+            session['logged_in'] = True
+            session['username'] = username
+            return redirect(url_for('index'))
+        else:
+            flash('Incorrect username or password. Please try again.', 'error')
+            return render_template('login.html')
+    else:
+        return render_template('login.html')
+
+@app.route('/logout', methods=['POST'])
+def logout():
+    session.pop('logged_in', None)
+    session.pop('username', None)
+    return redirect(url_for('index'))
+
+@app.route('/home')
+def home():
     # Connect to the SQLite database
     conn = sqlite3.connect('myrecipe.db')
     cursor = conn.cursor()
@@ -105,6 +138,13 @@ def search_recipe():
     app.logger.info(f"Found {len(recipes)} matching recipes")
 
     return jsonify(recipes)
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
