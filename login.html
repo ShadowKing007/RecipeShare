@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RecipeShare</title>
+    <link rel="icon" href="static/RecipeShare.jpeg" type="image/icon type">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles_login.css') }}">
+</head>
+<body>
+    <div class="container">
+        {% if not session.logged_in %}
+            <h2>Login</h2>
+            <form method="POST" action="/login">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+        {% else %}
+            <h2>Welcome, {{ session.username }}</h2>
+            <form method="POST" action="/logout">
+                <button type="submit">Logout</button>
+            </form>
+        {% endif %}
+
+    </div>
+    {% include 'footer.html' %}
+</body>
+</html>
