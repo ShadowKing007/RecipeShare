@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>About RecipeShare</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
     <style>
-        body, html {
+        body,
+        html {
             height: 100%;
             margin: 0;
             padding: 0;
@@ -16,31 +18,52 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            min-height: 100vh;
+
         }
 
-        .content {
+        .center-content {
             text-align: center;
+        }
+
+        .full-height {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
         }
     </style>
 </head>
+
 <body>
     {% include 'navbar.html' %}
 
     <div class="container">
-        <div class="content">
+        <div class="center-content">
             <h2>About RecipeShare</h2>
-            <p>
-                RecipeShare is your culinary journey to the heart of India, a treasure trove of handpicked dishes that showcase the vibrant and diverse flavors of Indian cuisine. With a rich heritage spanning centuries, India's gastronomic landscape is as diverse as its culture, and RecipeShare brings you a curated collection of authentic Indian recipes that are nothing short of a culinary masterpiece.
-            </p>
-            <p>
-                Our mission is to celebrate the essence of Indian cooking by sharing the secrets of generations-old recipes, handed down through families and cherished by food enthusiasts worldwide. From the fiery spices of the North to the aromatic blends of the South, RecipeShare's repertoire covers the length and breadth of India, offering a delectable array of appetizers, main courses, desserts, and more.
-            </p>
-            <p>
-                Every dish you discover on RecipeShare tells a story – a story of tradition, innovation, and the love that goes into preparing each meal. Whether you're an experienced chef or a home cook eager to explore, RecipeShare is your trusted companion on this gastronomic voyage. Join us in savoring the essence of India, one dish at a time, and embark on a flavorful journey that will tantalize your taste buds and ignite your passion for Indian cuisine.
-            </p>
+            <ol>
+                <br>RecipeShare is your culinary journey to the heart of India,
+                a treasure trove of handpicked dishes that showcase the vibrant and diverse flavors of Indian cuisine.
+                With a rich heritage spanning centuries, India's gastronomic landscape is as diverse as its culture, and
+                RecipeShare brings you a curated collection of authentic Indian recipes that are nothing short of a
+                culinary masterpiece.<br>
+
+                <br> Our mission is to celebrate the essence of Indian cooking by sharing the secrets of generations-old
+                recipes, handed down through families and cherished by food enthusiasts worldwide. From the fiery spices
+                of the North to the aromatic blends of the South, RecipeShare's repertoire covers the length and breadth
+                of India, offering a delectable array of appetizers, main courses, desserts, and more.<br>
+
+                <br>Every dish you discover on RecipeShare tells a story – a story of tradition, innovation, and the
+                love that goes into preparing each meal. Whether you're an experienced chef or a home cook eager to
+                explore, RecipeShare is your trusted companion on this gastronomic voyage. Join us in savoring the
+                essence of India, one dish at a time, and embark on a flavorful journey that will tantalize your taste
+                buds and ignite your passion for Indian cuisine.<br>
+            </ol>
         </div>
     </div>
 
     {% include 'footer.html' %}
 </body>
+
 </html>

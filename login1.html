@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>RecipeShare</title>
+	<link rel="icon" href="static/RecipeShare.jpeg" type="image/icon type">
+	<link rel="stylesheet" href="static/style1.css">
+</head>
+
+<body>
+	<div class="main">
+		<div class="navbar">
+			<div class="icon">
+				<img src="static/RecipeShare1.png" alt="RecipeShare Logo">
+			</div>
+
+			<div class="menu">
+				<ul>
+					<li><a href="#">HOME</a></li>
+					<li><a href="#">STARTERS</a></li>
+					<li><a href="#">MAINCOURSE</a></li>
+					<li><a href="#">BEWERAGES</a></li>
+					<li><a href="#">CONTACT</a></li>
+				</ul>
+			</div>
+			<!--
+			<div class="search">
+				<input class="srch" type="search" name="" placeholder="Type To text">
+				<a href="#"> <button class="btn">Search</button></a>
+			</div>
+-->
+		</div>
+		<div class="content">
+			<h1><br><span>RECIPE</span> <br>SHARE</h1>
+			<p class="par">Discover a world of culinary delights and share your passion for cooking with fellow food
+				enthusiasts.
+
+				<br> Explore Mouthwatering Recipes: Browse through a diverse collection of recipes from around the
+				globe.
+
+				<br> Share Your Culinary Creations: Have a secret family recipe or a culinary masterpiece?
+
+				<br> Capture Delicious Moments: Don't forget to snap mouthwatering photos of your dishes.
+
+				<br> Join Our Foodie Community: Become part of a vibrant community.
+
+				<br>Get ready to embark on a gastronomic adventure! Start exploring and sharing your love for food
+				today.
+			</p>
+
+			<button class="cn"><a href="#">JOIN US</a></button>
+
+			<div class="form">
+				{% if not session.logged_in %}
+				<h2>Login Here</h2>
+				<form method="POST" action="/login">
+					<div class="form-group">
+						<input type="text" id="username" name="username" placeholder="Enter Username" required>
+					</div>
+					<div class="form-group">
+						<input type="password" id="password" name="password" placeholder="Enter Password" required>
+					</div>
+					<button class="btnn" type="submit">Login</button>
+				</form>
+				{% else %}
+				<h2>Welcome, {{ session.username }}</h2>
+				<form method="POST" action="/logout">
+					<button type="submit">Logout</button>
+				</form>
+				{% endif %}
+				<!--
+				<input type="email" name="email" placeholder="Enter Email Here">
+				<input type="password" name="" placeholder="Enter Password Here">
+				<button class="btnn"><a href="#">Login</a></button>
+
+				<p class="link">Don't have an account<br>
+					<a href="#">Sign up </a> here</a>
+				</p>
+				<p class="liw">Log in with</p>
+			-->
+				<div class="icons">
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+	{% include 'footer.html' %}
+
+</body>
+
+</html>
