@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+
 /* Footer styles */
 .footer {
     background-color: #f2f2f2;
@@ -5,4 +7,33 @@
     text-align: center;
     bottom: 0;
     width: 100%;
+}
+/* Styles for transparent and blurred background */
+.transparent-blur-container {
+    position: relative;
+    background: rgba(255, 255, 255, 0.8); /* Adjust the alpha (fourth value) for transparency */
+    backdrop-filter: blur(10px); /* Adjust the blur radius as needed */
+    padding: 20px;
+    border-radius: 10px; /* Optional: Add rounded corners to the container */
+}
+
+.center-content {
+    text-align: center;
+}
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    text-align: center;
 }

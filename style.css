@@ -45,9 +45,6 @@ input[type="text"], input[type="password"] {
     flex-direction: column;
 }
 
-.center-content {
-    text-align: center;
-}
 
 /*  */
 .container{
